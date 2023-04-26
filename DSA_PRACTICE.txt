@@ -1,0 +1,556 @@
+//1)https://www.hackerrank.com/challenges/java-1d-array-introduction/problem
+	  int a[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i]=scan.nextInt();
+        }
+
+//2)https://www.hackerrank.com/challenges/java-2d-array/problem
+List<List<Integer>> arr = new ArrayList<>();
+
+        for (int i = 0; i < 6; i++) {
+            String[] arrRowTempItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+            List<Integer> arrRowItems = new ArrayList<>();
+
+            for (int j = 0; j < 6; j++) {
+                int arrItem = Integer.parseInt(arrRowTempItems[j]);
+                arrRowItems.add(arrItem);
+            }
+
+            arr.add(arrRowItems);
+        }
+          int sum=Integer.MIN_VALUE;
+    int temp=0;
+    for (int i=1;i<5;i++){
+        for (int j=1;j<5;j++){
+            temp=arr.get(i).get(j)+arr.get(i-1).get(j-1)+arr.get(i-1).get(j)+arr.get(i-1).get(j+1)+arr.get(i+1).get(j-1)+arr.get(i+1).get(j)+arr.get(i+1).get(j+1);
+
+            if(temp>sum){
+            sum=temp;
+            }
+        }
+
+
+    }
+    System.out.println(sum);
+
+
+//3)https://www.hackerrank.com/challenges/java-negative-subarray/problem
+int n,i,j,sum,c=0;
+Scanner s=new Scanner(System.in);
+n=s.nextInt();
+int a[]=new int[n];
+for(i=0;i<a.length;i++)
+a[i]=s.nextInt();
+for(i=0;i<n;i++)
+{
+    sum=0;
+    for(j=i;j<n;j++)
+    {
+        sum+=a[j];
+    if(sum<0)
+    c++;
+    }
+}
+System.out.println(c);
+
+
+//4)https://www.hackerrank.com/challenges/java-arraylist/problem
+ArrayList<ArrayList<Integer>> Arrays = new ArrayList<ArrayList<Integer>>();
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+for(int i = 0; i<n; i++){
+    ArrayList<Integer> ar = new ArrayList<Integer>();
+    int d = sc.nextInt();
+    for(int j = 0;j<d;j++){
+        int a = sc.nextInt();
+        ar.add(a);
+    }
+    Arrays.add(ar);
+}
+int q = sc.nextInt();
+for(int k = 0; k<q; k++){
+    int x, y;
+    x = sc.nextInt();
+    y = sc.nextInt();
+    try{
+       System.out.println(Arrays.get(x-1).get(y-1)); 
+    } catch (IndexOutOfBoundsException e){
+        System.out.println("ERROR!");
+    }
+}
+sc.close();
+
+//5)https://www.hackerrank.com/challenges/java-1d-array/problem
+public static boolean canWin(int leap, int[] game) {
+    // Return true if you can win the game; otherwise, return false.
+    return isSolvable( leap, game, 0);    
+}
+
+public static boolean isSolvable (int leap, int[] game, int i){
+    if ( i >= game.length){
+        return true;
+    }
+    if ( i<0 || game[i] ==1){
+        return false;
+    }
+    game[i] = 1;
+
+    return isSolvable(leap, game, i + leap) || isSolvable(leap, game, i + 1) || isSolvable(leap, game, i - 1);
+}
+
+
+//6)https://www.hackerrank.com/challenges/java-list/problem
+ArrayList<Integer> ar=new  ArrayList<Integer>();
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+for(int i=0;i<n;i++)
+{
+    int a=sc.nextInt();
+    ar.add(a);
+}
+// System.out.println(ar);
+int k=sc.nextInt();
+for(int i=0;i<k;i++)
+{
+    String qu=sc.next();
+    
+    if(qu.equals("Insert")){
+        int p=sc.nextInt();
+        int ele=sc.nextInt();
+        ar.add(p,ele);
+    }
+    if(qu.equals("Delete")){
+        int q=sc.nextInt();
+        ar.remove(q);
+    }
+}
+for(Integer i:ar)
+System.out.print(i+" ");
+
+
+//7)https://www.hackerrank.com/challenges/java-stack/problem
+Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            Stack<Character> stack=new Stack<>();
+           for(char c : input.toCharArray()){
+            if(!stack.isEmpty()){
+                switch(c){
+                    case ')':
+                        if( stack.peek() == '(' ){
+                            stack.pop();
+
+                        }
+                        break;
+                    case '}':
+                        if( stack.peek() == '{' ){
+                            stack.pop();
+
+                        }
+                        break;
+                    case ']':
+                        if( stack.peek() == '[' ){
+                            stack.pop();
+
+                        }
+                        break;
+                    default:
+                       stack.push(c);
+
+
+
+                }
+
+            }else{
+                stack.push(c);
+            }
+        }
+
+        System.out.println(stack.isEmpty());
+}
+
+
+//8)https://www.hackerrank.com/challenges/java-hashset/problem
+HashSet<ArrayList> h = new HashSet<>();
+for(int i=0; i<t; i++){
+    ArrayList<String> a = new ArrayList<>();
+    a.add(pair_left[i]);
+    a.add(pair_right[i]);
+
+    h.add(a);
+    System.out.println(h.size());
+}
+
+
+//9)https://www.hackerrank.com/challenges/java-comparator/problem
+class Checker implements Comparator<Player>{
+    public int compare(Player a, Player b){
+        if(a.score == b.score){ 
+            return a.name.compareTo(b.name);
+        }
+        return (a.score > b.score)? -1 : 1;
+    }
+}
+
+
+//10)https://www.hackerrank.com/challenges/java-generics/problem
+class Printer
+{
+   //Write your code here
+ public <T> void printArray(T[] arr){
+       for(T element : arr){
+           System.out.println(element);
+       }
+   }
+}
+
+
+//11)https://www.hackerrank.com/challenges/java-sort/problem
+Scanner s=new Scanner(System.in);
+int n,t,i,j;
+float fa;
+String ts;
+n=s.nextInt();
+int a[]=new int[n];
+String st[]=new String[n];
+float f[]=new float[n];
+for( i=0;i<n;i++)
+{
+a[i]=s.nextInt();
+st[i]=s.next();
+f[i]=s.nextFloat();
+}
+for(i=0;i<n;i++)
+{
+for(j=0;j<n-i-1;j++)
+{
+if(f[j]==f[j+1])
+{
+if(st[j].compareTo(st[j+1])>0)
+{
+ts=st[j];
+st[j]=st[j+1];
+st[j+1]=ts;
+}
+}
+if(f[j]<f[j+1])
+{
+fa=f[j];
+f[j]=f[j+1];
+f[j+1]=fa;
+ts=st[j];
+st[j]=st[j+1];
+st[j+1]=ts;
+}
+}
+}
+for(i=0;i<n;i++)
+System.out.println(st[i]);
+
+
+//12)https://www.hackerrank.com/challenges/java-dequeue/problem
+Scanner in = new Scanner(System.in);
+ Deque deque = new ArrayDeque<>();
+int n = in.nextInt();
+            int m = in.nextInt();
+            int max = 0;
+
+            for (int i = 0; i < n; i++) {
+                int num = in.nextInt();
+                deque.add(num);
+                set.add(num);
+                if(deque.size() > m){
+                    int tmp = deque.pop();
+                    if(!deque.contains(tmp)){ set.remove(tmp); }
+                }
+                if(deque.size() == m){
+                    int Unique = set.size();
+                    max = (Unique > max) ? Unique : max;
+                }
+            }
+            System.out.println(max);
+
+//13)https://www.hackerrank.com/challenges/java-bitset/problem
+Scanner sc=new Scanner(System.in);
+        int N=sc.nextInt();
+        int M=sc.nextInt();
+        BitSet bs1=new BitSet(N);
+        BitSet bs2=new BitSet(N);
+        for(int i=1;i<=M;i++) {
+
+            String operation=sc.next();
+            int a=sc.nextInt();
+            int b=sc.nextInt();
+            if(operation.equals("AND")) {
+                if(a==1) bs1.and(bs2);else bs2.and(bs1); }
+            else if(operation.equals("OR")) {
+                if(a==1) bs1.or(bs2);else bs2.or(bs1); }
+            else if(operation.equals("XOR")) {
+                if(a==1) bs1.xor(bs2); else bs2.xor(bs1); }
+            else if(operation.equals("SET")) {
+                if(a==1)  bs1.set(b, true); else bs2.set(b,true);  }
+            else if(operation.equals("FLIP")) {
+                if(a==1) bs1.flip(b); else bs2.flip(b);
+            }
+            System.out.println(bs1.cardinality()+" "+bs2.cardinality());
+        }
+
+
+//14)https://www.hackerrank.com/challenges/java-priority-queue/problem
+import java.util.*;
+class Student implements Comparable<Student>{
+    private int id;
+    private String name;
+    private double cgpa;
+    public Student(int id, String name, double cgpa){
+        this.id=id;
+        this.name=name;
+        this.cgpa=cgpa;
+    }
+    
+    public int compareTo(Student s){
+        if(cgpa==s.getCgpa() && name.compareTo(s.getName())==0){
+             
+        return id-s.getId();
+        }
+        if(cgpa==s.getCgpa()) {
+        return name.compareTo(s.getName());
+        }
+        if(cgpa>s.getCgpa()){ 
+        return -1;
+        }
+         else{
+             return 1;  
+        } 
+    }    
+    public int getId(){
+        return id;
+    }
+    public String getName(){
+        return name;
+    }
+    public double getCgpa(){
+        return cgpa;
+    } 
+    
+    
+    
+    
+}
+class Priorities{
+   
+    public List<Student> getStudents(List<String> events){
+        PriorityQueue<Student> pq = new PriorityQueue<>();
+        
+        for (String str : events) {
+            String[] event =str.split(" ");
+            
+            switch(event[0]){
+                case "ENTER":{
+                                       
+                    String name= event[1];
+                    int id= Integer.valueOf(event[3]);
+                    double cgpa= Double.valueOf(event[2]); 
+                    Student student = new Student(id,name,cgpa );
+                    pq.add(student);
+                    break;                  
+                }
+                case "SERVED":{
+                    pq.poll();
+                    break;
+                }
+            }
+        }
+        ArrayList<Student> temp = new ArrayList<>();
+        while (!pq.isEmpty()) {
+            temp.add(pq.poll());
+         }
+        return temp;
+}
+}
+
+//15)https://www.hackerrank.com/challenges/java-string-compare/problem
+public static String getSmallestAndLargest(String str, int number) {
+    String smallest = ""; String largest = "";
+
+   for(int i=0;i<=str.length()-number;i++){
+       int range = i + number;
+       String subStringI = str.substring(i,range);
+       if(subStringI.compareTo(largest)>0){
+           largest=subStringI;
+       }
+       if(subStringI.compareTo(smallest)<0){
+           smallest=subStringI;
+       }
+       if(i==0){
+           smallest=subStringI;
+       }
+   }
+       
+       return smallest + "\n" + largest;
+   }
+
+   //16)https://www.hackerrank.com/challenges/java-string-reverse/problem
+   Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        int i=0;
+        int j=A.length()-1;
+        String k="";
+        while(i<=j)
+        {
+            if(A.charAt(i)!=A.charAt(j))
+            {
+                k="No";
+                break;
+            }
+            i++;
+            j--;
+        }
+        if(k.equals("No"))
+        System.out.println("No");
+        else
+        System.out.println("Yes");
+
+//17)https://www.hackerrank.com/challenges/java-anagrams/problem
+static boolean isAnagram(String a, String b) {
+    // Complete the function
+    if(a.length() != b.length()){
+    return false;
+}
+
+char[] arrA = a.toLowerCase().toCharArray();
+char[] arrB = b.toLowerCase().toCharArray();
+
+java.util.Arrays.sort(arrA);
+java.util.Arrays.sort(arrB);
+return java.util.Arrays.equals(arrA, arrB);
+}
+
+//18)https://www.hackerrank.com/challenges/java-string-tokens/problem
+Scanner scan = new Scanner(System.in);
+String s = scan.nextLine();
+ArrayList<String> ar=new ArrayList<>();
+String k="";
+for(int i=0;i<s.length();i++)
+{
+    char c=s.charAt(i);
+    if(Character.isAlphabetic(c))
+    k+=c+"";
+    else
+    {
+        if(!k.equals(""))
+        ar.add(k);
+        k="";
+    }
+}
+if(!k.equals(""))
+ar.add(k);
+System.out.println(ar.size());
+for(String l:ar)
+System.out.println(l);
+scan.close();
+
+
+//19)https://www.hackerrank.com/challenges/pattern-syntax-checker/problem
+Scanner sc = new Scanner (System.in);
+        int cases = Integer.parseInt(sc.nextLine());
+
+        while (cases > 0 && sc.hasNextLine()) {
+                String patternRegex = sc.nextLine();
+        try {
+                Pattern r = Pattern.compile(patternRegex);
+                System.out.println("Valid");
+        }
+        catch (PatternSyntaxException e) {
+                System.out.println("Invalid");
+        }
+    }
+    sc.close();
+
+//20)https://www.hackerrank.com/challenges/java-regex/problem
+class MyRegex {
+    String pattern = "((([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))\\.){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))";
+}
+
+
+//21)https://www.hackerrank.com/challenges/duplicate-word/problem
+String regex = "\\b(\\w+)(\\s+\\1\\b)+";
+    Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+
+    Scanner in = new Scanner(System.in);
+    int numSentences = Integer.parseInt(in.nextLine());
+
+    while (numSentences-- > 0) {
+        String input = in.nextLine();
+
+        Matcher m = p.matcher(input);
+
+        // Check for subsequences of input that match the compiled pattern
+        while (m.find()) {
+            input = input.replaceAll("(?i)"+m.group(), m.group(1));
+        }
+        // Prints the modified sentence.
+        System.out.println(input);
+    }
+
+    in.close();
+
+//22)https://www.hackerrank.com/challenges/valid-username-checker/problem
+class UsernameValidator {
+   
+    public static final String regularExpression = "[a-zA-Z]\\w{7,29}";
+}
+
+
+//23)https://www.hackerrank.com/challenges/java-primality-test/problem
+BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+;
+        String n = bufferedReader.readLine();
+        BigInteger big=new BigInteger(n);
+        boolean isPrime=big.isProbablePrime(13);
+        System.out.println(isPrime?"prime ":"not prime");
+
+        bufferedReader.close();
+
+
+//24)https://www.hackerrank.com/challenges/java-currency-formatter/problem
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    double payment = scanner.nextDouble();
+    scanner.close();
+      String us = NumberFormat.getCurrencyInstance(Locale.US).format(payment); String india = NumberFormat.getCurrencyInstance(new Locale("en", "in")).format(payment); String china = NumberFormat.getCurrencyInstance(Locale.CHINA).format(payment);
+       String france = NumberFormat.getCurrencyInstance(Locale.FRANCE).format(payment);
+    System.out.println("US: " + us);
+    System.out.println("India: " + india);
+    System.out.println("China: " + china);
+    System.out.println("France: " + france);
+}
+
+//25)https://www.hackerrank.com/challenges/tag-content-extractor/problem
+public static void main(String[] args) {
+    String regex = "<(.+)>([^<>]+)</(\\1)>";
+    Pattern p = Pattern.compile(regex);
+
+    Scanner in = new Scanner(System.in);
+    int testCases = Integer.parseInt(in.nextLine());
+
+    while (testCases-- > 0) {
+        String line = in.nextLine();
+        Matcher m = p.matcher(line);
+
+        if (m.find()) {
+            
+            m.reset();
+            while (m.find()) {
+                System.out.println(m.group(2));
+            }
+        } else {
+            System.out.println("None");
+        }
+    }
+
+    in.close();
+}
